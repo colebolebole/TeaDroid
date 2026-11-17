@@ -61,7 +61,7 @@ import app.teadroid.ui.common.navViewModel
 
 class LoginVM : ViewModel() {
     var server by mutableStateOf(Graph.session.serverUrl)
-    var mode by mutableIntStateOf(0) // 0 = token, 1 = username + password
+    var mode by mutableIntStateOf(0) // 0 = username + password, 1 = access token
     var token by mutableStateOf("")
     var user by mutableStateOf("")
     var pass by mutableStateOf("")
@@ -71,7 +71,7 @@ class LoginVM : ViewModel() {
 
     val canSubmit: Boolean
         get() = server.isNotBlank() && !busy &&
-            if (mode == 0) token.isNotBlank() else user.isNotBlank() && pass.isNotBlank()
+            if (mode == 1) token.isNotBlank() else user.isNotBlank() && pass.isNotBlank()
 
     fun submit(onDone: () -> Unit) {
         viewModelScope.launch {
@@ -80,7 +80,7 @@ class LoginVM : ViewModel() {
             try {
                 val base = normalizeServer(server)
                 val api = Graph.api
-                val tok = if (mode == 0) token.trim() else api.createToken(base, user.trim(), pass, otp.trim().ifBlank { null })
+                val tok = if (mode == 1) token.trim() else api.createToken(base, user.trim(), pass, otp.trim().ifBlank { null })
                 val me = api.verify(base, tok)
                 Graph.session.signIn(base, tok, me)
                 onDone()
@@ -169,7 +169,7 @@ fun LoginScreen(onLoggedIn: () -> Unit) {
                     )
 
                     SingleChoiceSegmentedButtonRow(Modifier.fillMaxWidth()) {
-                        listOf("Access token", "Password").forEachIndexed { i, label ->
+                        listOf("Password", "Access token").forEachIndexed { i, label ->
                             SegmentedButton(
                                 selected = vm.mode == i,
                                 onClick = { vm.mode = i },
@@ -179,7 +179,7 @@ fun LoginScreen(onLoggedIn: () -> Unit) {
                         }
                     }
 
-                    if (vm.mode == 0) {
+                    if (vm.mode == 1) {
                         OutlinedTextField(
                             value = vm.token,
                             onValueChange = { vm.token = it },
