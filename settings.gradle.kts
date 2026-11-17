@@ -20,5 +20,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "EZject"
+rootProject.name = "TeaDroid"
 include(":app")

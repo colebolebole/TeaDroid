@@ -1,6 +1,6 @@
-﻿# EZject for Android
+﻿# TeaDroid
 
-A Material 3 Expressive client for a self-hosted Gitea instance (default: ezject.colebolebole.site).
+A Material 3 Expressive Android client for Gitea. You choose your server on first launch.
 Built with Kotlin, Jetpack Compose and Material3 1.5 (expressive APIs), against the Gitea REST API (/api/v1).
 
 ## Features

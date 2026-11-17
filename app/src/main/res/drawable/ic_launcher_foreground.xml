@@ -4,8 +4,18 @@
     android:height="108dp"
     android:viewportWidth="108"
     android:viewportHeight="108">
-    <!-- Lightning bolt "inject" glyph, inside the 66dp adaptive-icon safe zone -->
+    <!-- Teacup with steam, inside the 66dp adaptive-icon safe zone -->
     <path
         android:fillColor="#BBF396"
-        android:pathData="M60,24 L38,58 L52,58 L46,86 L70,48 L55,48 Z" />
+        android:pathData="M30,48 H70 V60 A16,16 0 0 1 54,76 H46 A16,16 0 0 1 30,60 Z" />
+    <path
+        android:strokeColor="#BBF396"
+        android:strokeWidth="4.5"
+        android:strokeLineCap="round"
+        android:pathData="M70,52 H74 A7,7 0 0 1 74,66 H68" />
+    <path
+        android:strokeColor="#BBF396"
+        android:strokeWidth="4"
+        android:strokeLineCap="round"
+        android:pathData="M42,40 C38,36 46,33 42,29 M54,40 C50,36 58,33 54,29" />
 </vector>

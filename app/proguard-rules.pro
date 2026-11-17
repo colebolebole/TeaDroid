@@ -1,10 +1,10 @@
 # kotlinx.serialization: keep generated serializers for our models
 -keepattributes *Annotation*, InnerClasses
 -dontnote kotlinx.serialization.AnnotationsKt
--keepclassmembers class site.colebolebole.ezject.data.** {
+-keepclassmembers class app.teadroid.data.** {
     *** Companion;
 }
--keepclasseswithmembers class site.colebolebole.ezject.data.** {
+-keepclasseswithmembers class app.teadroid.data.** {
     kotlinx.serialization.KSerializer serializer(...);
 }
 -dontwarn org.bouncycastle.**
